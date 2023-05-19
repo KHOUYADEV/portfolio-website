@@ -19,7 +19,7 @@
       -> Copy the color mode (HSL)
   */
 
-  --hue: 162;
+  --hue: 14 ;
   --first-color: hsl(var(--hue), 100%, 40%);
   --first-color-alt: hsl(var(--hue), 56%, 35%);
   --title-color: hsl(228, 8%, 95%);
@@ -227,8 +227,20 @@ svg {
 }
 
 /* Add blur to header */
-
-
+.scroll-header{
+  background-color: transparent;
+}
+.scroll-header::after{
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: hsla(0, 0%, 10%, .3);
+  backdrop-filter: blur(24px);
+  top:0;
+  left:0;
+  z-index: -1;
+}
 /* Active link */
 
 
@@ -291,11 +303,45 @@ svg {
   fill: var(--first-color);
   filter: drop-shadow(0 12px 12px hsla(var(--hue), 100%, 40%, .2));
 }
+/*== if the image doesn't fit the blob adjust the size with the width property
+and adjust the position with the transform x(horizontal) y(vertical) property
+.home__img{
+  width: 980px;
+  transform: translateX(-140px)
+}==*/
 /*=============== BUTTON ===============*/
-
-
+.button{
+  display: inline-block;
+  padding: .75rem 1.25rem;
+  border-radius: 5px;
+  color: var(--title-color);
+  font-size: var(--font-regular);
+  font-weight: var(--font-medium);
+  background-color: var(--first-color-alt);
+  transition: box-shadow .4s;
+}
+.button:hover{
+  box-shadow: 0 8px 24px hsla(var(--hue), 100%, 40%, .25);
+}
 /*=============== ABOUT ===============*/
-
+.about__container{
+  row-gap: 2.5rem;
+}
+.about__data{
+  text-align: center;
+}
+.about__description{
+  margin-block: 1rem 1.5rem;
+}
+.about__image{
+  justify-self: center;
+}
+.about__blob{
+  width: 320px;
+}
+.about__blob path{
+  stroke: var(--first-color);
+}
 
 /*=============== SKILLS ===============*/
 
