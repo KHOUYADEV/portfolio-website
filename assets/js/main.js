@@ -36,10 +36,27 @@ const scrollHeader = () =>{
 window.addEventListener('scroll', scrollHeader)
 
 /*=============== EMAIL JS ===============*/
+const contactForm = document.getElementById('contact-form')
+const contactMessage = document.getElementById('contact-message')
+const sendEmail = (e)=>{
+    e.preventDefault()
+    //serviceID - templateID - #form - publickey
+    emailjs.sendForm('service_la5eq61', 'template_ucvtl77', '#contact-form', 'LApyaLIot6sRkN4rD')
+    .then(()=>{
+        //show sent message
+        contactMessage.textContent= 'Message sent successfully ...'
+        // Remove message after five seconds
+        setTimeout(()=>{
+            contactMessage.textContent=''
+        }, 5000)
+        // clear input fild
+        contactForm.reset()
+    }, ()=>{
+        contactMessage.textContent= 'Message not sent (service error)'
+    })
+}
 
-
-
-
+contactForm.addEventListener('submit', sendEmail)
 /*=============== SHOW SCROLL UP ===============*/ 
 
 
